@@ -53,7 +53,11 @@ class IncidenteController extends Controller
      */
     public function edit(Incidente $incidente)
     {
-        
+        // Para evitar que se editen incidentes de otros usuarios
+        // if(auth()->user()->isNot($incidente->user))    {
+        //     abort(403);
+        // }
+
         return view('incidentes.edit', [
             'incidente' => $incidente
         ]);
@@ -64,6 +68,11 @@ class IncidenteController extends Controller
      */
     public function update(Request $request, Incidente $incidente)
     {
+        // Para evitar que se editen incidentes de otros usuarios
+        // if(auth()->user()->isNot($incidente->user))    {
+        //     abort(403);
+        // }
+        
         $request->validate([
             'titulo' => 'required',
             'descripcion' => 'required',

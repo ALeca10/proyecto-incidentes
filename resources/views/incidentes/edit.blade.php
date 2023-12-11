@@ -16,8 +16,7 @@
                         <label for="title" class="mb-3 block text-base font-medium text-[#07074D]">
                             Título
                         </label>
-                        <textarea name="titulo" class="block w-full rounded-md border-gray-300">
-                            {{-- {{ old('titulo', $incidente->titulo) }} --}}
+                        <textarea name="titulo" class="block w-full rounded-md border-gray-300">{{ old('titulo', $incidente->titulo) }}
                         </textarea>
                         <x-input-error :messages="$errors->get('titulo')"/> <br>
 
@@ -38,7 +37,7 @@
                         <label for="description" class="mb-3 block text-base font-medium text-[#07074D]">
                             Descripción
                         </label>
-                        <textarea name="descripcion" class="block w-full rounded-md border-gray-300">
+                        <textarea name="descripcion" class="block w-full rounded-md border-gray-300">{{ old('descripcion', $incidente->descripcion) }}
                         </textarea>
                         <x-input-error :messages="$errors->get('descripcion')"/><br>
 
