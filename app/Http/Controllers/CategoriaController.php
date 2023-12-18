@@ -12,7 +12,17 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        //Obtener incidentes de la base de datos
+        $categorias = \App\Models\Categoria::all();
+
+        //Asignar la cabecera
+        $heads = [
+            'ID',
+            'Nombre'
+        ];
+
+        //Retornar la vista con los parámetros
+        return view('categorias.index', compact('categorias', 'heads'));
     }
 
     /**
@@ -28,7 +38,15 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+        ]);
+        
+        $request = Categoria::create([
+            'nombre' => $request->get('nombre'),
+        ]);
+
+        return redirect()->route('categorias.index')->with('status', 'Categoría creada correctamente');
     }
 
     /**

@@ -12,7 +12,18 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
+        //Obtener incidentes de la base de datos
+        $areas = \App\Models\Area::all();
+
+        //Asignar la cabecera
+        $heads = [
+            'ID',
+            'Lugar'
+        ];
+
+        //Retornar la vista con los parámetros
+        
+        return view('areas.index', compact('areas', 'heads'));
     }
 
     /**
@@ -28,7 +39,15 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'lugar' => 'required',
+        ]);
+        
+        $request = Area::create([
+            'lugar' => $request->get('lugar'),
+        ]);
+
+        return redirect()->route('areas.index')->with('status', 'Zona creada correctamente');
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Incidente;
 use Illuminate\Http\Request;
+use App\Models\Categoria;
+use App\Models\Area;
 
 class IncidenteController extends Controller
 {
@@ -12,7 +14,9 @@ class IncidenteController extends Controller
      */
     public function index()
     {
-        return view('incidentes.index');
+        $categorias = Categoria::all();
+        $areas = Area::all();
+        return view('incidentes.index', compact('categorias', 'areas'));
     }
 
     /**
@@ -34,8 +38,7 @@ class IncidenteController extends Controller
             'estado' => 'A',
         ]);
 
-        return to_route('incidentes.index')
-        ->with('status', 'Incidente creado correctamente');
+        return redirect()->route('incidentes.list')->with('status', 'Incidente creado correctamente');
     }
 
     /**

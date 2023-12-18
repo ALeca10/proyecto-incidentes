@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('incidentes', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo', 30);
+            $table->string('titulo', 45);
             $table->date('fecha_incidente');
             $table->unsignedBigInteger('area_id')->nullable();
             $table->foreign('area_id')->references('id')->on('areas');
@@ -35,3 +35,4 @@ return new class extends Migration
         Schema::dropIfExists('incidentes');
     }
 };
+

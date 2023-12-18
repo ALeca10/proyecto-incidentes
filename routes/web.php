@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\ResolucionController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\IncidenteController;
 use App\Http\Controllers\ProfileController;
+use Database\Seeders\Areas;
 use Illuminate\Support\Facades\Route;
 
 // DB::listen(function($query)   {
@@ -31,6 +35,27 @@ Route::get('/incidentes/{incidente}/edit', [IncidenteController::class, 'edit'])
 
 Route::put('/incidentes/{incidente}', [IncidenteController::class, 'update'])
         ->name('incidentes.update');
+
+
+//Categorias routing
+Route::get('/categorias', [CategoriaController::class, 'index'])
+        ->name('categorias.index');
+
+Route::post('/categorias', [CategoriaController::class, 'store'])
+        ->name('categorias.store');
+
+
+//Zonas routing
+Route::get('/areas', [AreaController::class, 'index'])
+        ->name('areas.index');
+
+Route::post('/areas', [AreaController::class, 'store'])
+        ->name('areas.store');
+
+
+//Resoluciones routing
+Route::get('/resoluciones', [ResolucionController::class, 'index'])
+        ->name('resolucion.index');
 
 require __DIR__.'/auth.php';
 

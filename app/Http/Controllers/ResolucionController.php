@@ -12,7 +12,22 @@ class ResolucionController extends Controller
      */
     public function index()
     {
-        //
+        //Obtener incidentes de la base de datos
+        $incidentes = \App\Models\Incidente::all();
+
+        //Asignar la cabecera
+        $heads = [
+            'ID',
+            'Usuario',
+            'Título',
+            'Fecha',
+            'Estado',
+
+        ];
+
+        //Retornar la vista con los parámetros
+        
+        return view('resoluciones.index', compact('incidentes', 'heads'));
     }
 
     /**

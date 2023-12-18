@@ -1,16 +1,30 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Listado de Incidentes') }}
-        </h2>
-    </x-slot>
+@extends('adminlte::page')
 
-    <div class="py-12">
+@section('title', 'Inicio')
+
+@section('content_header')
+
+    <div class="row justify-content-between">
+        <h1>
+            {{ __('Nuevos Incidentes') }}
+        </h1>
+    
+        <a href="/incidentes" class="btn btn-warning">
+            <i class="fas fa-plus"></i> Nuevo ticket
+        </a>
+        
+    </div>
+
+@stop
+
+@section('content')
+<x-app-layout>
+    <div class="py-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <div class="mt-6 bg-white dark:bg-gray-800 shadow-sm rounded-lg divide-y dark:divide-gray-900">
+                    <div class="mt-6 bg-black dark:bg-gray-800 shadow-sm rounded-lg divide-y dark:divide-gray-900">
 
                         @foreach ($incidentes as $incidente)
 
@@ -70,3 +84,13 @@
     </div>
 
 </x-app-layout>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
+

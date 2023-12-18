@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('secuencia', 25);
             $table->string('detalle');
+            $table->unsignedBigInteger('incidente_id')->nullable();
+            $table->foreign('incidente_id')->references('id')->on('incidentes');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

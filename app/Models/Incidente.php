@@ -13,14 +13,27 @@ class Incidente extends Model
     protected $fillable = [
         'titulo',
         'fecha_incidente',
-        'area_id',
         'descripcion',
-        'categoria_id',
         'estado',
     ];
 
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function categoria(): BelongsTo
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function resolucion(): BelongsTo
+    {
+        return $this->belongsTo(Resolucion::class);
     }
 }
